@@ -1,0 +1,284 @@
+:root {
+  --form-transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --form-white: #fff;
+  --form-text: #2e2f42;
+  --form-label: #8e8f99;
+  --form-accent: #4d5ae5;
+  --form-accent-hover: #404bbf;
+  --form-close-bg: #e7e9fc;
+  --modal-bg: #fcfcfc;
+  --backdrop-bg: rgba(46, 47, 66, 0.4);
+
+  --form-border: rgba(46, 47, 66, 0.4);
+  --form-placeholder: rgba(46, 47, 66, 0.4);
+
+  --modal-radius: 4px;
+  --modal-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Backdrop ---------- */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  background-color: var(--backdrop-bg);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity var(--form-transition),
+    visibility var(--form-transition);
+}
+
+.backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ---------- Модальне вікно ---------- */
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 408px;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 72px 24px 24px;
+
+  background-color: var(--modal-bg);
+  border-radius: var(--modal-radius);
+  box-shadow: var(--modal-shadow);
+}
+
+.modal-title {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--form-text);
+}
+
+/* ---------- Кнопка закриття ---------- */
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  color: var(--form-text);
+  background-color: var(--form-close-bg);
+  border: 1px solid rgba(46, 47, 66, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition:
+    background-color var(--form-transition),
+    border-color var(--form-transition),
+    color var(--form-transition);
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--form-white);
+  background-color: var(--form-accent-hover);
+  border-color: var(--form-accent-hover);
+}
+
+/* ---------- Поля форми ---------- */
+.field + .field {
+  margin-top: 8px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--form-label);
+}
+
+.input-wrap {
+  position: relative;
+}
+.field-input,
+.field-textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--form-border);
+  border-radius: var(--modal-radius);
+  background-color: transparent;
+
+  font-family: inherit;
+  font-weight: 400;
+
+  outline: transparent;
+
+  transition: border-color var(--form-transition);
+}
+
+.field-input {
+  height: 40px;
+  padding: 0 16px 0 38px;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #434455;
+}
+
+.field-textarea {
+  height: 120px;
+  padding: 8px 16px;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: #434455;
+  resize: none;
+}
+
+.field-textarea::placeholder {
+  color: var(--form-placeholder);
+  opacity: 1;
+}
+
+.field-input:focus,
+.field-textarea:focus {
+  border-color: var(--form-accent);
+}
+
+.field-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+
+  color: var(--form-text);
+  pointer-events: none;
+
+  transition: color var(--form-transition);
+}
+
+.field-input:focus + .field-icon {
+  color: var(--form-accent);
+}
+
+/* ---------- Кастомний checkbox ---------- */
+.checkbox-wrap {
+  margin: 16px 0 24px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+
+  color: var(--form-white);
+  background-color: transparent;
+  border: 1px solid var(--form-border);
+  border-radius: 2px;
+
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+
+  transition:
+    background-color var(--form-transition),
+    border-color var(--form-transition),
+    outline-color var(--form-transition);
+}
+
+.checkbox-icon {
+  opacity: 0;
+  transition: opacity var(--form-transition);
+}
+
+.checkbox:checked + .checkbox-label .custom-checkbox {
+  background-color: #404bbf;
+  border-color: #404bbf;
+}
+
+.checkbox:checked + .checkbox-label .checkbox-icon {
+  opacity: 1;
+}
+
+.checkbox:focus-visible + .checkbox-label .custom-checkbox {
+  outline-color: var(--form-accent);
+}
+
+.checkbox-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--form-label);
+}
+
+.checkbox-link {
+  color: var(--form-accent);
+  text-decoration: underline;
+
+  transition: color var(--form-transition);
+}
+
+.checkbox-link:hover,
+.checkbox-link:focus {
+  color: var(--form-accent-hover);
+}
+
+/* ---------- Кнопка Send ---------- */
+.modal-submit {
+  display: block;
+  width: 169px;
+  margin: 0 auto;
+  padding: 16px 0;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--form-white);
+
+  background-color: var(--form-accent);
+  border: 0;
+  border-radius: var(--modal-radius);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+
+  transition: background-color var(--form-transition);
+}
+
+.modal-submit:hover,
+.modal-submit:focus {
+  background-color: var(--form-accent-hover);
+}
