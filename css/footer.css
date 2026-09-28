@@ -28,6 +28,8 @@
 
 .footer-text {
   max-width: 264px;
+  margin-left: auto;
+  margin-right: auto;
   color: var(--color-cloud);
   text-align: left;
 }
@@ -132,6 +134,10 @@
     justify-content: flex-start;
     column-gap: 24px;
     row-gap: 72px;
+      .footer-text {
+    margin-left: 0;
+    margin-right: 0;
+  }
   }
 
   .footer-left,
