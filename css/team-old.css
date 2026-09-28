@@ -13,13 +13,11 @@
 
 .team-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 24px;
 }
 
 .team-item {
-  width: 264px;
+  width: calc((1128px - 3 * 24px) / 4);
   background-color: var(--color-white);
   border-radius: 0 0 4px 4px;
   box-shadow:
