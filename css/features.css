@@ -49,9 +49,6 @@
 @media screen and (min-width: 1158px) {
   .features-list {
     flex-wrap: nowrap;
-      .features-item-text {
-    font-weight: 400;
-  }
   }
 
   .features-item {
@@ -74,7 +71,8 @@
     font-weight: 500;
     line-height: 1.2;
   }
+
+  .features-item-text {
+    font-weight: 400;
+  }
 }
-
-
-
