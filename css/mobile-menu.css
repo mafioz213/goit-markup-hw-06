@@ -85,14 +85,18 @@
 }
 
 .mobile-address {
+  margin-bottom: 48px;
+}
+
+.mobile-address-list {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 40px;
 }
 
 .mobile-phone,
 .mobile-email {
+  display: block;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
@@ -103,7 +107,7 @@
 }
 
 .mobile-email {
-  color: var(--color-navy-blue);
+  color: var(--color-slate);
 }
 
 .mobile-socials {
